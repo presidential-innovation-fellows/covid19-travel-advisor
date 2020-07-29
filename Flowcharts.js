@@ -181,37 +181,113 @@ const flowcharts = [
                 "next": ""
             },
 
-            "": {
-                "type": "statement",
-                "short": "",
+            "NH": {
+                "type": "bool_decision",
+                "short": "New Hampshire",
                 "theme": "white-card",
-                "text": "",
-                "info": `<a style='color: royalblue;' target='_blank' href=''>More Info</a>`,
-                "next": ""
+                "text": "Are you traveling to New Hampshire from surrounding New England States (Maine, Vermont, Massachusetts, Connecticut, Rhode Island)?",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://www.covidguidance.nh.gov/out-state-visitors'>More Info</a>`,
+                "yes": "",
+                "no": ""
             },
 
-            "": {
+            "NH-YES": {
                 "type": "statement",
-                "short": "",
+                "short": "New Hampshire - New England",
                 "theme": "white-card",
-                "text": "",
+                "text": "The two week self-quarantine has been lifted for those traveling to New Hampshire from surrounding New England States (Maine, Vermont, Massachusetts, Connecticut, Rhode Island). ",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://www.covidguidance.nh.gov/out-state-visitors'>More Info</a>`,
+                "next": ""
+            },
+            "NH-NO": {
+                "type": "statement",
+                "short": "NH - Non New England",
+                "theme": "white-card",
+                "text": "Those traveling to New Hampshire from non-New England states for an extended period of time are still asked to self-quarantine for a two-week period.",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://www.covidguidance.nh.gov/out-state-visitors'>More Info</a>`,
+                "next": ""
+            },
+            "NJ": {
+                "type": "statement",
+                "short": "New Jersey",
+                "theme": "white-card",
+                "text": "Are you traveling from Alaska, Alabama, Arizona, Arkansas, California, Delaware, Florida, Georgia, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maryland, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Mexico, North Carolina, North Dakota, Ohio, Oklahoma, South Carolina, Tennessee, Texas, Utah, Virginia, Washington, Wisconsin, Puerto Rico, or Washington D.C.?",
+                "info": `<a style='color: royalblue;' target='_blank' href=''>More Info</a>`,
+                "yes": "NJ-YES",
+                "no": "NJ-NO"
+            },
+            "NJ-YES": {
+                "type": "statement",
+                "short": "NJ - Self Quarantine",
+                "theme": "white-card",
+                "text": "You must  <b>self-quarantine</b>. Starting July 27, you are asked to voluntarily supply contact information and details about where you plan on staying. ",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://covid19.nj.gov/forms/njtravel'>Online Form</a>`,
+                "next": ""
+            },
+            "NJ-NO": {
+                "type": "statement",
+                "short": "NJ - Non Quarantine",
+                "theme": "green-card",
+                "text": "You are exempt from self-quarantine.",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://covid19.nj.gov/faqs/nj-information/general-public/which-states-are-on-the-travel-advisory-list-are-there-travel-restrictions-to-or-from-new-jersey'>More Info</a>`,
+                "next": ""
+            },
+            "NM": {
+                "type": "statement",
+                "short": "New Mexico",
+                "theme": "white-card",
+                "text": "Most people, including residents who have traveled, are required to self-quarantine for 14 days or the duration of their stay, whichever is shorter.",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://www.newmexico.org/covid-19-traveler-information/'>More Info</a>`,
+                "next": ""
+            },
+            "OH": {
+                "type": "bool_decision",
+                "short": "Ohio",
+                "theme": "white-card",
+                "text": "Traveling Ohioans and out-of-state tourists who have visited an area of high risk, or who have had possible exposure to the coronavirus, are asked to voluntarily quarantine for 14 days.<br>Are you traveling from Alabama, Arizona, Florida, Georgia, Idaho, Mississippi, Nevada, South Carolina or Texas?",
+                "info": `<a style='color: royalblue;' target='_blank' href=''>More Info</a>`,
+                "yes": "",
+                "no": ""
+            },
+            "OH-YES": {
+                "type": "statement",
+                "short": "OH - Quarantine",
+                "theme": "white-card",
+                "text": "Please self-quarantine for 14-days.",
                 "info": `<a style='color: royalblue;' target='_blank' href=''>More Info</a>`,
                 "next": ""
             },
-            "": {
+            "OH-NO": {
                 "type": "statement",
-                "short": "",
-                "theme": "white-card",
-                "text": "",
+                "short": "OH - Non Quarantine",
+                "theme": "green-card",
+                "text": "You are exempt from self-quarantine.",
                 "info": `<a style='color: royalblue;' target='_blank' href=''>More Info</a>`,
                 "next": ""
             },
-            "": {
-                "type": "statement",
-                "short": "",
+            "PA": {
+                "type": "bool_decision",
+                "short": "Pennsylvania",
                 "theme": "white-card",
-                "text": "",
-                "info": `<a style='color: royalblue;' target='_blank' href=''>More Info</a>`,
+                "text": "Are you traveling from Alabama, Arizona, Arkansas, California, Florida, Georgia, Idaho, Iowa, Kansas, Louisiana, Mississippi, Nevada, North Carolina, Oklahoma, South Carolina, Tennessee, Texas or Utah?",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://www.health.pa.gov/topics/disease/coronavirus/Pages/Travelers.aspx'>More Info</a>`,
+                "yes": "PA-YES",
+                "no": "PA-NO"
+            },
+            "PA-YES": {
+                "type": "statement",
+                "short": "PA - Quarantine",
+                "theme": "orange-card",
+                "text": "Please self-quarantine for 14 days",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://www.health.pa.gov/topics/disease/coronavirus/Pages/Travelers.aspx'>More Info</a>`,
+                "next": ""
+            },
+            "PA-NO": {
+                "type": "statement",
+                "short": "PA - Non Quarantine",
+                "theme": "green-card",
+                "text": "You are exempt from self-quarantine.",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://www.health.pa.gov/topics/disease/coronavirus/Pages/Travelers.aspx'>More Info</a>`,
                 "next": ""
             },
             "": {
