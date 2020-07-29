@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />  
+    <meta name="Referrer-Policy" value="no-referrer | same-origin"/>
+
+    <title>Covid-19 Screener</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        html {
+          scroll-behavior: smooth;
+        }
+    </style>
+    <link rel="stylesheet" href="{base_url}/assets/css/themes.css">
+    
+    <script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=VA" id="_fed_an_ua_tag"></script>
+    <!-- Favicons
+    ================================================== -->
+
+    <link href="https://prod-va-gov-assets.s3-us-gov-west-1.amazonaws.com/img/design/icons/apple-touch-icon.png" rel="apple-touch-icon-precomposed">
+    <link href="https://prod-va-gov-assets.s3-us-gov-west-1.amazonaws.com/img/design/icons/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72">
+    <link href="https://prod-va-gov-assets.s3-us-gov-west-1.amazonaws.com/img/design/icons/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114">
+    <link href="https://prod-va-gov-assets.s3-us-gov-west-1.amazonaws.com/img/design/icons/apple-touch-icon-152x152.png" rel="apple-touch-icon-precomposed" sizes="144x144">
+    <link rel="shortcut icon" href="https://prod-va-gov-assets.s3-us-gov-west-1.amazonaws.com/img/design/icons/favicon.ico">   
+  </head>
+  <body>
+    <section class="site-banner usa-banner" aria-label="Official government website">
+        <link rel="stylesheet" href="{base_url}/assets/css/uswds.css" media="none" onload="if(media!='all')media='all'">
+        
+        <script async src="{base_url}/assets/js/uswds.min.js"></script>   
+        <div class="usa-accordion">
+          <header class="usa-banner__header">
+            <div class="usa-banner__inner">
+              <div class="grid-col-auto">
+                <img class="usa-banner__header-flag" src="{base_url}/assets/img/us_flag_small.png" alt="U.S. flag">
+              </div>
+              <div class="grid-col-fill tablet:grid-col-auto">
+                <p class="usa-banner__header-text">An official website of the United States government</p>
+                <p tabindex = "-1"  class="usa-banner__header-action">Here’s how you know</p>
+              </div>
+              <button class="usa-accordion__button usa-banner__button"
+                aria-expanded="false" aria-controls="gov-banner">
+                <span class="usa-banner__button-text">Here's how you know</span>
+              </button>
+            </div>
+          </header>
+          <div class="usa-banner__content usa-accordion__content" id="gov-banner">
+            <div class="grid-row grid-gap-lg">
+              <div class="usa-banner__guidance tablet:grid-col-6">
+                <img class="usa-banner__icon usa-media-block__img" src="{base_url}/assets/img/icon-dot-gov.svg" alt="Dot gov">
+                <div class="usa-media-block__body">
+                  <p>
+                    <strong>The .gov means it’s official.</strong>
+                    <br>
+                    Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
+                  </p>
+                </div>
+              </div>
+              <div class="usa-banner__guidance tablet:grid-col-6">
+                <img class="usa-banner__icon usa-media-block__img" src="{base_url}/assets/img/icon-https.svg" alt="Https">
+                <div class="usa-media-block__body">
+                  <p>
+                    <strong>The site is secure.</strong>
+                    <br>
+                    The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    
+    
+    <div id="top_hdr" class="container-fluid" style="border-bottom:1px solid lightgray">
+        <img role="banner" id="top_hdr_img" alt="agency logo" src="" style="margin: 1em 0.5em 0.5em 0em;max-width:60%;
+        height:auto;">        
+    </div>
+    <div role="main">
+        <h1 id="top_hdr_info" tabindex="0" class="container-fluid text-center" style="font-size: 1.3em;">
+            Covid 19 Screening Tool
+        </h1>
+    </div>
+
+    <div id="top_statement" tabindex="0" role="complementary" tabindex="1" class="mt-4 container-fluid text-left"> Please answer the questions listed below. We won't store or share your data.</div>
+    <div id="top_el" role="application" class="container mt-4">
+        
+    </div>
+
+    <div id="bottom_ftr_info" role="contentinfo" class="text-white bg-primary font-weight-light container-fluid text-center mt-4 mb-4">
+        <small>Thank you for helping us protect you and others during this time.</small>
+    </div>
+  </body>
+</html>
+
+<script>
+
+    function select_change() {
+        console.log('select_change');
+    }
+
+    function create_states_select_box() {
+        let states_select = '';
+        states_select = `<select>
+                            <option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option>
+	                        <option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option>
+	                        <option value="DE">Delaware</option><option value="DC">District Of Columbia</option>
+	                        <option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option>
+	                        <option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option>
+	                        <option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option>
+	                        <option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option>
+	                        <option value="MO">Missouri</option><option value="MT">Montana</option>
+	                        <option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option><option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option><option value="TX">Texas</option>
+                            <option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option>
+                            <option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option>
+                        </select>`;
+        return states_select;
+    }
+
+    function apply_variables_in_text(text_in) {
+        let vars = ['$DATETIME', '$US_STATES'];
+        let t = "";
+        let r = "";
+
+        t = text_in;
+        r = text_in;
+        
+        vars.forEach((v) => {
+            if(t.includes(v)) {
+                if(v === '$DATETIME'){
+                    let day = new Date().toLocaleString('en-us', {  weekday: 'long' });
+                    let date = new Date().toLocaleString('en-us', {  date: 'short' });
+                    r = t.replace(v, day + "<br>" + date);
+                }
+                else if(v === '$US_STATES') {
+                    r = t.replace(v, create_states_select_box());
+                }
+            }
+        });
+        
+        return r;
+    }
+    
+    function apply_weekday_theme_to_card(header_card_el, fac_json) {
+        let previous_bk_color = header_card_el.style.backgroundColor;
+        let previous_fg_color = header_card_el.style.color;
+
+        try {
+            if(fac_json.hasOwnProperty('weekday_card_bg_color_array') && 
+                fac_json.hasOwnProperty('weekday_card_text_color_array')) {
+
+                    let d = new Date();
+                    let weekday = d.getDay();
+                    console.log('applying weekday theme for day: ' + weekday);
+                    header_card_el.style.backgroundColor = fac_json.weekday_card_bg_color_array[weekday - 1];
+                    header_card_el.style.color = fac_json.weekday_card_text_color_array[weekday - 1];        
+            }
+            else
+                console.log('no data to apply weekday theme ');
+        } catch (e) {
+            // restore
+            console.log('error applying weekday theme: ' + e.message);
+            header_card_el.style.backgroundColor = previous_bk_color;
+            header_card_el.style.color = previous_fg_color;
+        }
+    }
+
+    function create_card_element(id, card_header, card_body, card_footer, card_btns, theme_string)
+    {
+        let el = document.createElement("DIV");
+        el.className =  theme_string + " card text-center mt-5";
+        el.id = "card-" + id;
+        document.querySelectorAll("div.card")
+        
+        // console.log('card theme classes: ' + theme_string);
+
+        if(card_header!=="") {
+            let hdr = document.createElement("DIV");
+            hdr.className = "card-header bg-dark text-light";
+            hdr.innerHTML = card_header;
+            hdr.id = el.id + "-hdr"
+            el.appendChild(hdr);            
+        }
+        
+
+        if(card_body!=="") {
+            let bdy = document.createElement("DIV");
+            bdy.className = "card-body";
+            bdy.innerHTML = card_body;
+            
+            if(card_body.length>300)
+                bdy.style.fontSize = "70%"
+
+            bdy.id = el.id + "-bdy"
+            el.appendChild(bdy);
+
+            if(card_btns.length > 0)
+            {
+                card_btns.forEach(element => {
+                    let row = document.createElement("DIV");
+                    row.className = "card-row text-center mb-2";
+            
+                    el.appendChild(row);
+                    row.appendChild(element);
+                });   
+            }
+        }
+        
+        if(card_footer!=="")
+        {
+            let ftr = document.createElement("DIV");
+            ftr.className = "card-footer card-footer-text";
+            ftr.innerHTML = card_footer;
+            ftr.id = el.id + "-ftr"
+            el.appendChild(ftr);
+        }
+
+        if(theme_string === "weekday") {
+            
+            apply_weekday_theme_to_card(el);
+        }
+
+        return el;
+    }
+
+    function handler_next(called_by, flow, next_flow_el, all_buttons) {
+        
+        if(next_flow_el==="") {
+            // reset
+            let node = document.getElementById("top_el");
+            // ie11/es5 fix
+            try {
+                node.querySelectorAll('*').forEach(n => n.remove());
+            } catch(e) {
+                node.querySelectorAll('*').forEach(
+                    function(n, i) { n.remove(); });
+            }
+                
+                setTimeout(handler_next(undefined, flow, first_flow_el), 500);
+            return;            
+        }
+        else if(next_flow_el === 'select') {
+            // determine the next element from selected dropdown
+            try {
+                let parent_div = called_by.parentElement.parentElement;
+                let select_box = parent_div.getElementsByTagName('select');
+                next_flow_el = select_box[0].value;
+                console.log('Selected ' + next_flow_el);
+                // see if this element exists
+                if(flow[next_flow_el]===undefined)
+                    next_flow_el = "default";
+
+            } catch(e) {
+                console.log('Error selecting dropdown element: ' + e.message);
+            }
+        }
+
+        let flow_el = flow[next_flow_el];
+        
+        if(flow_el === undefined) 
+        {
+            console.log('Unknown flow element: ' + next_flow_el)
+            return;
+        }
+        
+
+        if(called_by !== undefined){
+            
+            let parent = document.getElementById('top_el'); 
+            
+            // TODO: more than two sibling buttons
+            let sibling_div = called_by.parentElement.nextSibling === null ? called_by.parentElement.previousSibling:called_by.parentElement.nextSibling;
+            let sibling_btn = undefined;
+
+            if(sibling_div.lastElementChild) {
+                if( sibling_div.lastElementChild.tagName === "BUTTON")
+                {
+                    sibling_btn = sibling_div.lastElementChild;
+                }
+            }
+            
+            if(called_by.classList.contains('button-white')) {
+               // this button is not selected
+               called_by.classList.toggle( "button-white" );
+               called_by.classList.toggle( "button-blue" );               
+
+               if(sibling_btn !== undefined) {
+                    if(sibling_btn.classList.contains('button-blue')) {
+                        sibling_btn.classList.toggle( "button-white" );
+                        sibling_btn.classList.toggle( "button-blue" );                        
+                    }
+                }
+            }                
+
+            while(parent.lastElementChild && parent.lastElementChild !== called_by.parentElement.parentElement) {
+                parent.removeChild(parent.lastElementChild);
+            }        
+
+        }
+
+        let card_hdr = "";
+        let card_bdy = "";
+        let card_ftr = "";
+        let card_btns = [];
+
+        let state_theme = flow_el.theme;
+
+        let flow_el_text = apply_variables_in_text(flow_el.text);
+
+        if(flow_el.type === "statement") {
+
+            
+            let nxt = flow_el.next;
+            card_bdy = flow_el_text; 
+            card_hdr = flow_el.short;
+            card_ftr = flow_el.info;
+
+
+            if(nxt !== undefined && nxt!=="" && nxt !== "end")
+            {
+                let btn = document.createElement("BUTTON");
+                btn.textContent=`Next`;
+                btn.className = "button-general button-white "; //"btn btn-primary mb-2 mr-2";
+                btn.tabIndex = 0;
+                // btn.id = id;
+                btn.addEventListener("click", function() { handler_next(btn, flow, nxt, [btn]); }, false);    
+                card_btns.push(btn);
+            }
+            else {// last element
+                if(nxt !== "end") {
+                    let btn = document.createElement("BUTTON");
+                    btn.textContent=`Reset`;
+                    btn.className = "button-general button-white"; //"btn btn-primary mb-2 mr-2";
+                    btn.tabIndex = 0;
+                    // btn.id = id;
+                    btn.addEventListener("click", function() { handler_next(btn, flow, nxt, [btn]); }, false);    
+                    card_btns.push(btn);
+                }                
+            }
+        }
+        else if(flow_el.type === "bool_decision") {
+            
+            let nxt_yes = flow_el.yes;
+            let nxt_no = flow_el.no;
+            card_bdy = flow_el_text;
+            card_hdr = flow_el.short;
+            card_ftr = flow_el.info;
+
+            if(nxt_yes !== undefined && nxt_no !== undefined)
+            {
+                let yes_btn = document.createElement("BUTTON");
+                yes_btn.textContent=`Yes`;
+                yes_btn.className = "button-general button-white" ; //"btn btn-primary  mb-2 mr-2";
+                yes_btn.tabIndex = 0;
+                // yes_btn.id = nxt_yes;
+                
+                let no_btn = document.createElement("BUTTON");
+                no_btn.textContent=`No`;
+                no_btn.className = "button-general button-white"; //"btn btn-primary  mb-2 mr-2";
+                no_btn.tabIndex = 0;
+                // no_btn.id = nxt_no;
+                
+                yes_btn.addEventListener("click", function() { handler_next(yes_btn, flow, nxt_yes, [yes_btn, no_btn]); }, false);
+                card_btns.push(yes_btn);
+                no_btn.addEventListener("click", function() { handler_next(no_btn, flow, nxt_no, [yes_btn, no_btn]); }, false);
+                card_btns.push(no_btn);
+            }            
+        }
+        else if(flow_el.type === "select_decision") {
+            let sel_button = 'Select';
+            let nxt = 'select';
+            card_bdy = flow_el_text; 
+            card_hdr = flow_el.short;
+            card_ftr = flow_el.info;
+
+            let btn = document.createElement("BUTTON");
+            btn.textContent=sel_button;
+            btn.className = "button-general button-white "; //"btn btn-primary mb-2 mr-2";
+            btn.tabIndex = 0;
+            // btn.id = id;
+            btn.addEventListener("click", function() { handler_next(btn, flow, nxt, [btn]); }, false);    
+            card_btns.push(btn);
+        }
+        else {
+            console.log('unknown flowchart element of type: ' + flow_el.type);            
+        }
+
+        let new_el = create_card_element(next_flow_el, card_hdr, card_bdy, card_ftr, card_btns, state_theme);
+        document.getElementById('top_el').appendChild(new_el);    
+        // document.getElementById('bottom_ftr_info').scrollIntoView(false);
+        if(called_by === undefined)
+            document.getElementById('top_hdr').scrollIntoView(false);
+        else
+           // it is not the first element
+            new_el.scrollIntoView(false);
+    }   
+
+    // this function is used when something goes wrong
+    function show_exceptions(hdr, bdy, ftr) {
+        let new_el = create_card_element("starting", hdr, bdy, ftr, [], "red");
+        // remove if there is already one
+        if(document.getElementById(new_el.id)!==null)
+            document.getElementById('top_el').textContent = "";
+        document.getElementById('top_el').appendChild(new_el);    
+    }
+
+    function setup_header(fac_json) {
+        document.getElementById('top_hdr_img').src = fac_json.image;
+        document.getElementById('top_hdr').style.backgroundColor = fac_json.header_color;
+        document.getElementById('top_hdr').style.color = fac_json.header_text_color;
+        document.getElementById('top_hdr_info').textContent = fac_json.name;        
+    }
+
+
+    function setup_body_color(fac_json) {
+        if(fac_json.hasOwnProperty('weekday_background_color_array') &&
+            fac_json.hasOwnProperty('weekday_text_color_array'))
+        {
+            let bg_color = '#ffffff';
+            let fg_color = '#000000';
+
+            try {
+                let d = new Date();
+                let d_of_wk = d.getDay();
+                
+                bg_color = fac_json.weekday_background_color_array[d_of_wk - 1];
+                fg_color = fac_json.weekday_text_color_array[d_of_wk - 1];
+            }
+            catch(e) {
+                console.log('Error setting up bg color: ' + e.message);
+            }
+            document.getElementsByTagName('body')[0].style.backgroundColor = bg_color;
+            document.getElementsByTagName('body')[0].style.color = fg_color;
+            // console.log('Setting up colors for the weekday: ' + bg_color + '/' + fg_color);
+        }        
+    }
+
+    function setup_facility(fac_json) {
+        setup_header(fac_json);
+        setup_body_color(fac_json);
+    }
+
+    function is_enabled(fac_json) {
+        if(fac_json.flow_enabled === false)
+        {
+            return false;    
+        }
+        
+        if(Date.parse(fac_json.effective_from) > Date.now()
+            || Date.parse(fac_json.effective_till) < Date.now())
+        {   // Screening protocol is not active today
+            return false;    
+        }
+
+        return true;
+    }
+
+    function default_loop() {
+        let facilitydata = [{facility_json_array_element}];      // variable that will be replaced by the federalist site generator
+        let flows = [{flow_json_array_element}];                 // variable that will be replaced by the federalist site generator
+
+        let flowchart = flows[0].flow;
+
+        console.log('BaseURL: ' + '{base_url}');
+        
+        setup_facility(facilitydata[0]);
+        handler_next(undefined, flowchart, first_flow_el);
+    
+    }
+
+    // federalist version of the site
+    var first_flow_el = "start";
+    default_loop();        
+
+</script>
