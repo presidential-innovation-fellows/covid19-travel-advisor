@@ -240,6 +240,49 @@ const flowcharts = [
                 "info": `<a style='color: royalblue;' target='_blank' href='https://www.newmexico.org/covid-19-traveler-information/'>More Info</a>`,
                 "next": ""
             },
+            "NY": {
+                "type": "bool_decision",
+                "short": "New York",
+                "theme": "white-card",
+                "text": "Are you arriving in New York on an NY Airport?",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://coronavirus.health.ny.gov/covid-19-travel-advisory'>More Info</a>`,
+                "yes": "NY-AIRPORT",
+                "no": "NY-NON-AIRPORT"
+            },
+            "NY-AIRPORT": {
+                "type": "statement",
+                "short": "New York - Airport",
+                "theme": "white-card",
+                "text": "Travelers arriving at airports in New York must fill out a Health Department traveler form, or face a possible $2,000 fine and a mandatory quarantine order.",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://forms.ny.gov/s3/Welcome-to-New-York-State-Traveler-Health-Form'>Online Form</a>`,
+                "next": "NY-ARRIVINGFROM"
+            },
+            "NY-ARRIVINGFROM": {
+                "type": "bool_decision",
+                "short": "NY - Non-Airport",
+                "theme": "white-card",
+                "text": "Have you spent more than 24 hours in Alaska, Alabama, Arizona, Arkansas, California, Delaware, Florida, Georgia, Idaho, Illinois, Indiana, Iowa, Kansas,  Kentucky, Louisiana, Maryland, Mississippi, Minnesota, Missouri, Montana, Nebraska, Nevada, New Mexico, North Carolina, North Dakota, Ohio, Oklahoma, South Carolina, Tennessee, Texas, Utah, Virginia, Washington, Wisconsin, Puerto Rico or Washington DC?",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://coronavirus.health.ny.gov/covid-19-travel-advisory'>More Info</a>`,
+                "yes": "NY-QUARANTINE",
+                "no": "NY-NO-QUARANTINE",
+            },
+            "NY-QUARANTINE": {
+                "type": "statement",
+                "short": "NY - Quarantine",
+                "theme": "orange-card",
+                "text": "You must self-quarantine for 14 days.",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://coronavirus.health.ny.gov/covid-19-travel-advisory'>Online Form</a>`,
+                "next": ""
+            },
+            "NY-NO-QUARANTINE": {
+                "type": "statement",
+                "short": "NY - No Quarantine",
+                "theme": "cyan-card",
+                "text": "You are exempt from self-quarantine.",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://coronavirus.health.ny.gov/covid-19-travel-advisory'>Online Form</a>`,
+                "next": ""
+            },
+
             "OH": {
                 "type": "bool_decision",
                 "short": "Ohio",
@@ -290,6 +333,23 @@ const flowcharts = [
                 "info": `<a style='color: royalblue;' target='_blank' href='https://www.health.pa.gov/topics/disease/coronavirus/Pages/Travelers.aspx'>More Info</a>`,
                 "next": ""
             },
+            "RI": {
+                "type": "statement",
+                "short": "Rhodes Island",
+                "theme": "white-card",
+                "text": "If you are traveling from a state that has a positivity rate for tests of greater than 5 percent are required to self-quarantine for two weeks. Alternatively, visitors can provide a negative test for the virus that was taken within the previous 72 hours. A person who receives a negative test during their quarantine can stop isolating, although the state recommends the full two-week quarantine.",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://health.ri.gov/covid/'>More Info</a>`,
+                "next": ""
+            },
+            "SC": {
+                "type": "statement",
+                "short": "South Carolina",
+                "theme": "white-card",
+                "text": "If you have visited an area with widespread or ongoing community transmission of the virus stay home for 14 days from the time they left that region.",
+                "info": `<a style='color: royalblue;' target='_blank' href=''>More Info</a>`,
+                "next": ""
+            },
+            
             "": {
                 "type": "statement",
                 "short": "",
