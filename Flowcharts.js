@@ -78,12 +78,28 @@ const flowcharts = [
                 "info": `<a style='color: royalblue;' target='_blank' href='https://coronavirus.dc.gov/release/dc-health-releases-list-high-risk-states'>More Info</a>`,
                 "next" : ""                
             },
-
             "FL": {
-                "type": "statement",
+                "type": "bool_decision",
                 "short": "Florida",
                 "theme": "white-card",
+                "text": "Are you traveling from New York, New Jersey or Connecticut?",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://floridahealthcovid19.gov/travelers/'>More Info</a>`,
+                "yes" : "FL-YES",
+                "no": "FL-NO"                
+            },  
+            "FL-YES": {
+                "type": "statement",
+                "short": "Florida - Quarantine",
+                "theme": "orange-card",
                 "text": "People from New York, New Jersey and Connecticut must self-quarantine at their own expense for 14 days when they enter Florida. Violators may be fined up to $500 or imprisoned for up to 60 days.",
+                "info": `<a style='color: royalblue;' target='_blank' href='https://floridahealthcovid19.gov/travelers/'>More Info</a>`,
+                "next" : ""                
+            },
+            "FL-NO": {
+                "type": "statement",
+                "short": "Florida - No Quarantine",
+                "theme": "cyan-card",
+                "text": "You are expempt from Self-Quarantine",
                 "info": `<a style='color: royalblue;' target='_blank' href='https://floridahealthcovid19.gov/travelers/'>More Info</a>`,
                 "next" : ""                
             },            
@@ -271,7 +287,7 @@ const flowcharts = [
                 "short": "NY - Quarantine",
                 "theme": "orange-card",
                 "text": "You must self-quarantine for 14 days.",
-                "info": `<a style='color: royalblue;' target='_blank' href='https://coronavirus.health.ny.gov/covid-19-travel-advisory'>Online Form</a>`,
+                "info": `<a style='color: royalblue;' target='_blank' href='https://coronavirus.health.ny.gov/covid-19-travel-advisory'>More Info</a>`,
                 "next": ""
             },
             "NY-NO-QUARANTINE": {
@@ -279,7 +295,7 @@ const flowcharts = [
                 "short": "NY - No Quarantine",
                 "theme": "cyan-card",
                 "text": "You are exempt from self-quarantine.",
-                "info": `<a style='color: royalblue;' target='_blank' href='https://coronavirus.health.ny.gov/covid-19-travel-advisory'>Online Form</a>`,
+                "info": `<a style='color: royalblue;' target='_blank' href='https://coronavirus.health.ny.gov/covid-19-travel-advisory'>More Info</a>`,
                 "next": ""
             },
 
