@@ -3,10 +3,11 @@ const facilities = [
         id: 1,
         default: true,  // if set to true, the site generator script creates an index.html file from this config
         generate_site: true,    // if set to true, the site generator creates an id.flow_id.html file from this config
-        name: 'Travel Advisories',
+        name: 'Travel Advisories',        
         image: 'https://www.gsa.gov/sites/gsa.gov/templates/resources/images/nav-logo.png',
         header_color: '#204F81',
         header_text_color: '#ffffff',
+        main_message: 'The advice provided in this app is for informational purpose only.<br><small>Data in this app was last modified on: July 31, 2020. We do not store or share your data.</small>',
         created_by: 'System',
         created_on: '06/12/2020',
         effective_from: '06/12/2020',
