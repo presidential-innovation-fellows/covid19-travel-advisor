@@ -85,7 +85,7 @@
         </h1>
     </div>
 
-    <div id="top_statement" tabindex="0" role="complementary" tabindex="1" class="mt-4 container-fluid text-left"> Please answer the questions listed below. We won't store or share your data.</div>
+    <div id="top_message" tabindex="0" role="complementary" tabindex="1" class="mt-4 container-fluid text-left"> </div>
     <div id="top_el" role="application" class="container mt-4">
         
     </div>
@@ -416,7 +416,14 @@
         document.getElementById('top_hdr_img').src = fac_json.image;
         document.getElementById('top_hdr').style.backgroundColor = fac_json.header_color;
         document.getElementById('top_hdr').style.color = fac_json.header_text_color;
-        document.getElementById('top_hdr_info').textContent = fac_json.name;        
+        document.getElementById('top_hdr_info').textContent = fac_json.name;
+        if(fac_json.main_message===undefined)
+        {
+            document.getElementById('top_message').textContent = "Please answer the questions listed below. We won't store or share your data.";
+        }  
+        else {
+            document.getElementById('top_message').innerHTML = fac_json.main_message;
+        }   
     }
 
 
