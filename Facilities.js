@@ -5,7 +5,7 @@ const facilities = [
         generate_site: true,    // if set to true, the site generator creates an id.flow_id.html file from this config
         name: 'Covid-19 Travel Advisory App',        
         image: 'https://presidentialinnovationfellows.gov/assets/logo-pif-light-b2933d8cf4d02279f2dad5d4e7e5b7e9bbc77c90daf0d058bcea71478a01071f.png',
-        header_color: '##2d2e2f',
+        header_color: '#2d2e2f',
         header_text_color: '#ffffff',
         main_message: 'The advice provided in this app is for informational purpose only.<br><small>Data in this app was last modified on: July 31, 2020. We do not store or share your data.</small>',
         created_by: 'System',
